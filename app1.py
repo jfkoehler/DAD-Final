@@ -1,10 +1,11 @@
 import streamlit as st 
 import PIL
 import torch 
-from torchvision.models import ResNet50_Weights
+from torchvision.models import ResNet50_Weights, resnet50
 weights = ResNet50_Weights.DEFAULT
 transforms = weights.transforms()
-model = torch.load('catdog.pt', map_location=torch.device('cpu'))
+model = resnet50(weights = weights)
+# model = torch.load('catdog.pt', map_location=torch.device('cpu'))
 
 st.header("Cat or Dog???")
 st.image('catdog.png')
